@@ -1,0 +1,75 @@
+% File that compiles all other files into one clean document.
+
+%Layout, imports, packages, class
+\input{utility/layout}
+
+%Titlepage
+\title{Warehouse Drone Collision Avoidance Midterm Report}
+\author{Tristan van Vegchel \hfil \\
+	Seacon Logistics}
+\date{Venlo, \today}
+
+%glossaries
+\makenoidxglossaries
+\input{utility/glossaries}
+
+%Bibliography
+\renewcommand{\bibname}{References}
+
+
+%Put includes in document environment
+\begin{document}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% CONFIGURATION OF PAGE HEADER
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pagestyle{fancy}
+	\newcommand{\headrulecolor}[1]{\patchcmd{\headrule}{\hrule}{\color{#1}\hrule}{}{}}
+	\newcommand{\footrulecolor}[1]{\patchcmd{\footrule}{\hrule}{\color{#1}\hrule}{}{}}
+	\pagestyle{fancy}
+	\fancyhf{}% Clear header/footer
+	\fancyhead[C]{}
+	\fancyhead[R]{\thepage}
+	\setlength{\headsep}{33pt}
+	\setlength{\headheight}{13.6pt}
+	\renewcommand{\headrulewidth}{0.4pt}
+	\setcitestyle{numbers}
+	\maketitle
+	\setcounter{page}{2}
+	
+	%Information page
+	\includepdf[pagecommand={}]{utility/InformationPage}
+	
+	%Abstract
+	
+	%Statement of authenticity
+	\includepdf[pagecommand={}]{utility/Statement_of_Authenticity}
+	%Content display
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\glsaddall
+	\printnoidxglossary[type=\acronymtype,title=List of Abbreviations]
+	\printnoidxglossary[title=Definitions]
+	
+	%Main part
+	\pagebreak
+	\pagenumbering{arabic}
+	
+	\include{chapters/introduction}
+	\include{chapters/simulation}
+	\include{chapters/collision_avoidance}
+	\include{chapters/general}
+	\include{chapters/self_reflection}
+	
+	%Bibliography
+	\bibliographystyle{agsm}
+	\bibliography{utility/bibliography}
+	
+	%Appendices
+	\begin{appendices}
+		\include{chapters/appendices/drone_states}
+		\include{chapters/appendices/sim_class_diagram}
+		\include{chapters/appendices/epics_stories}
+		\include{chapters/appendices/risk_management}
+	\end{appendices}
+\end{document}
