@@ -1,0 +1,77 @@
+---
+title: "Comparing Approaches"
+date: 2019-09-27
+categories:
+  - Documentation
+tags:
+  - Reinforcement Learning
+  - Imitation Learning 
+  - Subsumption Architecture
+  - Computer Vision
+  - Training
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Comparison of Approaches</title>
+  </head>
+  <body>
+    <p> 
+      When developing a collision avoidance solution for drones, a big thing to keep into consideration is scalability. In its simplest form, a collision avoidance protocol could be to just land the drone or send it in reverse whenever an object gets too close. However, in a context where collision avoidance is not the sole goal, better alternatives present themselves. This post is dedicated to listing approaches that could provide a robust solution. 
+    </p>
+    <h3>Single-Shot Detection</h3>
+    <p>
+      Single-Shot Detection (SSD) is an algorithm that only requires one picture to detect multiple objects. It is often trained on large datasets containing the majority of everyday objects. However, it can also be trained on custom datasets, or a only a subset of the labeled objects from pretrained networks can be used. An approach for this project could be to use the pretrained SSD model on the <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md" target="_blank">Tensorflow Model Zoo Github</a> and only detect the necessary labels such as vehicles/forklifts, humans, drones etc. This could then be combined with a distance sensor to predict whether a collision will happen.
+    </p>
+    <iframe width="900" height="600" src="https://www.youtube.com/embed/7p2XL8wApfo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+    <h4>Advantages</h4>
+    <p>
+      The biggest advantage of SSDs is them being very lightweight in terms of processing power. Drones usually don't have high processing power onboard, and due to the sheer amount of constant data transfer a connection-based solution is unfavorable. Performance speed is essential in the context of realtime processing.
+    </p>
+    <h4>Disadvantages</h4>
+    <p>
+      The only part done by the deep learning model is the object detection. This means that parts like distance calculation and recalculating the route in order to actually avoid collision have to be implemented manually. Furthermore, this solution is not easily scalable. While object detection can be used for a lot of different components within the entire project, everything that comes after detecting an object still has to be implemented manually. 
+    </p>
+    <h3>Subsumption Architecture</h3>
+    <p>
+      Originally described by <a href="https://apps.dtic.mil/dtic/tr/fulltext/u2/a160833.pdf" target="_blank"> Rodney Brooks</a>, it could be considered the opposition of AI. This is due to the fact that subsumption architecture makes use of sensory input to layer competences, instead of being guided by mental/behavioral-based algorithms like AI algorithms typically are.  
+    </p>
+    <h4>Advantages</h4>
+    <p>
+      Scalability is one of the major strong points. Since subsumption architecture makes use of a bottom-up approach, theoretically it should be possible to create a device that only needs additions when extending the solution.
+    </p>
+    <h4>Disadvantages</h4>
+    <p>
+      Subsumption architecture is based on sensory input, which requires the drone to be equiped with necessary sensors. This is generally not desired as this is both not a cost-efficient solution, and will affect the battery life/performance of the drone. Another major disadvantage is the complexity when it comes to designing a scalable system. Similarly to building scalable software applications, while in theory it should be possible to create a 'perfectly' scalable system, in practice this is hardly ever the case.  
+    </p>
+    <h3>Curriculum Learning</h3>
+    <p>
+      Curriculum learning is subset of reinforcement learning. As the name implies, it is based on the principle of following a course or curriculum where the complexity of the assignmnent is gradually increased. 
+    </p>
+    <h4>Advantages</h4>
+    <p>
+      By layering the training into multiple difficulties, the risk of getting stuck in a local optimum or getting misbehavior will be smaller. By dividing it, it is easier to determine which parts the neural network understands well and which it doesn't understand at all.
+    </p>
+    <h4>Disadvantages</h4>
+    <p>
+      Gradually increasing the training means that extra work needs to be done in order to ensure that each part is understood and carried over properly before it moves on next difficulty. This will most likely require extra time necessary for training, as well as for writing the implmentation. Moreover, since curriculum learning is a subset of reinforcement learning, all problems, even if reduced, are inherited too. Think of for example not defining the rewards and punishment criteria properly.
+    </p>
+    <h3>Imitation Learning</h3>
+    <p>
+      Imitation learning is another form of reinforcement learning. This time, however, the definition of a reward/punishment formula will not be necessary. Imitation learning is a form of supervised-learning that generates its own intrinsic reward formula based on imitating human behavior. In the context of the drone simulator (or any other game), this would require an expert to play and record the game multiple times, and in turn feed that gameplay to the algorithm. Based on the input, the algorithm would then determine what the human expert thinks is important in order to maximize the performance, and apply that to its own gameplay.
+    </p>
+    <iframe width="900" height="600" src="https://www.youtube.com/embed/OTMlElDuN3k?t=644" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <h4>Advantages</h4>
+    <p>
+      Imitation learning thrives in contexts where human-like behavior (and thus optimal performance is not necessarily important) is desired. Also, whenever it is not certain what actions exactly the network should be rewarded or punished for, imitation learning is likely to outperform its competitor algorithms. Finally, as seen in the video above, with certain tasks the algorithm learns to copy the human at a very fast rate.
+    </p>
+    <h4>Disadvantages</h4>
+    <p>
+      There are 2 major disadvantages when it comes to imitation learning. Firstly, it is supervised. This means that clean and proper data is required for an algorithm to be trained properly. Clean data should not only consist out of a good performance, but also mistake recovery should be included. This brings us to point 2, the human. Since the algorithm is trying to copy the expert's (human) behavior, it is bound to copy (minor) mistakes as well. 
+    </p>
+  </body>
+  </html>
+  
+    

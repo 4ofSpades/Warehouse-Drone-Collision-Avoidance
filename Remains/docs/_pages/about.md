@@ -1,0 +1,1 @@
+This project concerns itself with the development of a collision avoidance system for drones. The current approach is to train a neural network using a tailored simulation. This site is made using Git Pages in combination with Minimal Mistakes, and exists to showcase milestones and provide major updates.
