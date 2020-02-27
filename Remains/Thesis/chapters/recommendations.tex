@@ -1,0 +1,15 @@
+\chapter{Recommendations}
+\lhead{\thechapter \space Recommendations}
+\label{ch:recommendations}
+There are many ways to proceed with this project. This chapter describes the recommended ways to proceed, based on the work and research done. The recommendations listed focus on the improvement of the existing implementation, rather than extending it. 
+
+\section{Computer Vision Enhancements}
+The state machine concept is mostly reliant on its accuracy of its computer vision tasks. Enhancing these should result in a drastic increase in stability. There are, however, many ways to go about this. Currently, all computer vision tasks make use of a single frame. Adjusting this to make use of an average of a small number of frames should help out filtering noise without a significant loss in performance speed.
+
+\section{Movement Enhancement with PID controllers}
+One specific improvement possible is the improvement of the beam centering and distance maintenance (locking on state) task through the implementation of \gls{PID} controllers. \gls{PID} controllers makes use of a feedback loop control mechanism to regulate values. Using the beam centering as example, a \gls{PID} controller would make use of the present difference between center points (Proportional), how far it has already moved in previous iterations of the loop (Integral), as well as an estimate of how far it will end up afterwards (Derivative) for determining how much it should move the drone up or down. Proper use of this should result in not only in increase in positioning accuracy, but also an increase in performance speed.
+\\\\
+The Tello-openpose project that this product was based on made use of such controllers for tracking a human \citep{tello_openpose}. Due to difficulties with tuning them and time constraints, however, it was decided to leave them out at the time.
+
+\section{Object Segmentation}
+Continuing the research, the computer vision part can also be enhanced using the object detection/segmentation approach described in section \ref{sec:ssd_segmentation}. Using deep learned mask segmentation on the beam could provide a more accurate and robust solution to the distance estimation and beam centering tasks. It could also be used for collision detection, similarly to how the current implementation works. The model could be trained on common objects it has to mask. A distance estimation can then be made using its known average size together with the size of the mask. 

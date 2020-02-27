@@ -1,0 +1,104 @@
+% File that compiles all other files into one clean document.
+
+%Layout, imports, packages, class
+\input{utility/layout}
+\pdfminorversion=7
+
+%Titlepage
+\title{Report on Warehouse Drone Collision Avoidance}
+\subtitle{Bachelor Thesis}
+\author{Tristan van Vegchel}
+\date{Venlo, \today}
+\requirement{the degree \\ 
+	Bachelor of Science in Informatics \\
+	To be awarded by the \\
+	Fontys Hogeschool Techniek en Logistiek}
+
+%glossaries
+\makenoidxglossaries
+\input{utility/glossaries}
+
+%Bibliography
+\renewcommand{\bibname}{References}
+
+
+%Put includes in document environment
+%Wordcount = 556+1022+642+1258+1892+480+374 = 6224
+\begin{document}
+	\maketitle
+	\setcounter{page}{2}
+	
+	%Information page
+	\includepdf[pagecommand={}]{utility/InformationPage}
+	
+	%Abstract
+	\include{chapters/summary}
+	
+	%Statement of authenticity
+	\includepdf[pagecommand={}]{utility/Statement_of_Authenticity_new}
+	
+	\include{utility/styling}
+	%Content display
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\lstlistoflistings
+	
+	%Version history
+	\pagebreak
+	%\vhListAllAuthorsLong
+	%Author macros
+	\newcommand{\TVV}{Tristan van Vegchel}
+	\renewcommand \vhAuthorColWidth{.7\hsize}
+	\renewcommand \vhChangeColWidth{1.3\hsize}
+	\begin{versionhistory}
+		\vhEntry{0.1}{24-10-2019}{\TVV}{Created skeleton}
+		\vhEntry{0.2}{15-11-2019}{\TVV}{Added introduction}
+		\vhEntry{0.3}{31-12-2019}{\TVV}{Added SRS}
+		\vhEntry{0.4}{03-01-2020}{\TVV}{Added approaches}
+		\vhEntry{0.5}{06-01-2020}{\TVV}{Added project description}
+		\vhEntry{0.6}{08-01-2020}{\TVV}{Added state machine concept}
+		\vhEntry{0.7}{09-01-2020}{\TVV}{Updated report after feedback}
+		\vhEntry{0.8}{10-01-2020}{\TVV}{Added reinforcement learning concept}
+		\vhEntry{0.9}{12-01-2020}{\TVV}{Added conclusion \& recommendations}
+		\vhEntry{1.0}{12-01-2020}{\TVV}{Second review and completion of first version}
+		\vhEntry{1.1}{13-01-2020}{\TVV}{Consistency changes \& added drone and state descriptions}
+		\vhEntry{1.2}{13-01-2020}{\TVV}{Added appendix for installation and setup.}
+		\vhEntry{1.3}{13-01-2020}{\TVV}{Grammar changes after third review}
+	\end{versionhistory}
+	\glsaddall
+	\printnoidxglossary[type=\acronymtype,title=List of Abbreviations]
+	\printnoidxglossary[title=Definitions]
+	
+	%Main part
+	\pagebreak
+	\pagenumbering{arabic}
+	
+	\include{chapters/introduction}
+	\include{chapters/requirements_analysis}
+	\include{chapters/approaches}
+	\include{chapters/concept_one}
+	\include{chapters/concept_two}
+	\include{chapters/conclusion}
+	\include{chapters/recommendations}
+	
+	%Bibliography
+	\bibliographystyle{agsm}
+	\bibliography{utility/bibliography}
+	\lhead{\thechapter \space References}
+	
+	%Appendices
+	\begin{appendices}
+		\include{chapters/appendices/drone_states}
+		\include{chapters/appendices/risk_management}
+		\include{chapters/appendices/sim_class_diagram}
+		\include{chapters/appendices/concept_two_setup}
+		\include{chapters/appendices/bar_follow_states_one}
+		\include{chapters/appendices/bar_follow_states_two}
+		
+		\chapter{Software Requirements Specification}
+		Page left intentionally blank to act as cover page.
+		\label{app:srs}
+		\includepdf[pages=-]{utility/SRS/SRS_warehouse_collision_avoidance}
+	\end{appendices}
+\end{document}

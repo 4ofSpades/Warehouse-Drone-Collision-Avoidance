@@ -1,0 +1,45 @@
+\chapter{Collision Avoidance}
+\lhead{\thechapter \space Collision Avoidance}
+\label{ch:collision_avoidance}
+This chapter concerns the research part of the project regarding collision avoidance. The main research question states: "What is the feasibility and, if applicable, performance of \gls{AI} techniques?" As the main priority of the entire drone project is to reduce costs, it is preferred to make use of an \gls{AI} technique that could reduce or even remove the need for adding sensors to the drone. 
+
+\section{Comparison of Approaches}
+By doing research into similar cases, a comparison of approaches has been formed. Each approach comes with a description, its advantages, and disadvantages.
+
+\paragraph{Single-Shot Detection}
+\gls{SSD} is an algorithm that only requires one picture to detect multiple objects. It is often trained on large datasets containing the majority of everyday objects. However, it can also be trained on custom datasets, or, alternatively, only a subset of the labeled objects from pretrained networks can be used. An approach for this project could be to use the pretrained \gls{SSD} model on the Tensorflow Model Zoo Github and only detect the necessary labels such as vehicles/forklifts, humans, drones etc. This could then be combined with a distance sensor to predict whether a collision will happen.
+\\\\
+The biggest advantage of \gls{SSD}s is them being very lightweight in terms of processing power. Drones usually don't have high processing power on-board, and due to the sheer amount of constant data transfer a connection-based solution is unfavorable. Performance speed is essential in the context of real-time processing.
+\\\\
+The only part done by the deep learning model is the object detection. This means that parts like distance calculation and recalculating the route in order to actually avoid collision have to be implemented manually. A standalone \gls{SSD} requires a reference point with a known size to determine the distance from just visual footage. This would mean that every object should a reference point that is visible from every angle. This is very impractical and thus extra sensors are required.
+\pagebreak
+\paragraph{Subsumption Architecture}
+Originally described by Rodney Brooks, it could be considered the opposition of \gls{AI}. This is due to the fact that subsumption architecture makes use of sensory input to layer competences, instead of being guided by mental/behavioral-based algorithms like \gls{AI} algorithms typically are.\cite{subsumption_architecture}
+\\\\
+Scalability is one of the major strong points. Since subsumption architecture makes use of a bottom-up approach, theoretically it should be possible to create a device that only needs additions when extending the solution.
+\\\\
+Subsumption architecture is based on sensory input, which requires the drone to be equipped with necessary sensors. This is generally not desired as this is both not a cost-efficient solution, and will affect the battery life/performance of the drone. Another major disadvantage is the complexity when it comes to designing a scalable system.
+
+\paragraph{Curriculum Learning}
+Curriculum learning is subset of reinforcement learning. As the name implies, it is based on the principle of following a course or curriculum where the complexity of the assignment is gradually increased.
+\\\\
+By layering the training into multiple difficulties, the risk of getting stuck in a local optimum or getting misbehavior will be smaller. By dividing it, it will be easier to determine which parts the neural network understands well and which it does not understand at all.
+\\\\
+Gradually increasing the training means that extra work needs to be done in order to ensure that each part is understood and carried over properly before it moves on next difficulty. This will most likely require extra time necessary for training, as well as for writing the implementation. Moreover, since curriculum learning is a subset of reinforcement learning, all problems are inherited too to a certain degree. Notable examples include not defining the rewards and punishment criteria properly, or the difficulty with understanding and making decisions for longterm results.
+
+\paragraph{Imitation Learning}
+Imitation learning is another form of reinforcement learning. This time, however, the definition of a reward/punishment formula will not be necessary. Imitation learning is a form of supervised-learning that generates its own intrinsic reward formula based on imitating human behavior. In the context of the drone simulator (or any other game), this would require an expert to play and record the simulation multiple times, and in turn feed that gameplay to the algorithm. Based on the input, the algorithm would then determine what the human expert thinks is important in order to maximize the performance, and apply that to its own gameplay.
+\\\\
+Imitation learning thrives in contexts where human-like behavior (and thus optimal performance is not necessarily important) is desired. Also, whenever it is not certain what actions exactly the network should be rewarded or punished for, imitation learning is likely to outperform its competitor algorithms. Finally, as seen in the video above, with certain tasks the algorithm learns to copy the human at a very fast rate.
+\pagebreak
+\noindent
+There are 2 major disadvantages when it comes to imitation learning. Firstly, it is supervised. This means that clean and proper data is required for an algorithm to be trained properly. Clean data should not only consist out of a good performance, but also scenarios where the agent could learn how to avoid mistakes should be included. Since the algorithm is trying to copy the expert's (human) behavior, it is bound to copy (minor) mistakes as well.
+
+\section{Current Status}
+\label{sec:collision_avoidance_status}
+As of writing this report, one approach has partially been prototyped: curriculum learning. This was chosen first because it does not need any extra sensors, and, while the set up is similar to that of imitation learning, that of curriculum learning takes less time and has more documentation available, which is ideal for creating an initial prototype. However, even before having implemented the entire curriculum a problem already occurred. Namely, the problem with making decisions based on longterm results. Concretely, while the current software does allow an algorithm to train itself on it, it will not ever move. This is due to the fact that no reward is given for just moving around. The danger with giving a reward to something that is not a goal, is that the algorithm might misinterpret it as its main task. Even worse, the algorithm might find a way to get a higher score doing trivial tasks than actually performing as it was supposed to.  
+
+\section{Future Plans}
+As the main focus of this project is to satisfy the graduation internship requirements, it is important to define a point of no return. This is a point where the final decision on what approach to use during this time scope has to be made. Especially in the context of \gls{AI} development, time is often a big risk. 
+\\\\
+Curriculum learning will most likely not produce any significant results within this time span, and will thus be dropped. As imitation learning does not suffer from the same reward function problems, it will be the next approach to take. However, since \gls{AI} approaches generally take a lot of time, it will only be looked at very shortly. If it does not show enough potential for the remainder of this project by the midterm presentation, it will be swapped for an approach using extra sensors (e.g.: \gls{SSD}).

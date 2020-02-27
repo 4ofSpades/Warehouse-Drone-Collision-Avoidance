@@ -1,0 +1,89 @@
+\chapter{Specific Requirements}
+\lhead{\thechapter \space Specific Requirements}
+\label{ch:specific_requirements}
+
+\section{Functional Requirements}
+The following section describes the functions the product shall, should, and might include. For the definitions of these 3 terms refer to the glossary. Each of these 3 terms form a section, which are then further segmented into status, maintenance, and action tasks, for which the definitions can also be found in the glossary. Each functional requirement will have the following format:
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{img/func_req_format.png}
+	\label{fig:func_req_format}
+	\caption{Format for a functional requirement.}
+\end{figure}
+
+\noindent
+Whereas:
+\begin{itemize}
+	\item \textbf{a} is the priority group (shall, should, might)
+	\item \textbf{b} is the type of task
+	\item \textbf{c} is the unique number of that requirement within its group.
+\end{itemize}
+Each requirement is prefixed by at least one set of brackets containing its unique ID, but may have a second set containing one or more IDs of prerequisite tasks or groups, each separated by comma. Note that in figure \ref{fig:func_req_format} the prerequisites bracket contains a single \textbf{"a"}, which indicates that all requirements in that priority group are a prerequisite to that task.\\\\
+
+\textbf{[1] The product shall make the drone:}
+\begin{itemize}
+	\item \textbf{[1.1]} Status tasks:
+	\begin{itemize}
+		\item \textbf{[1.1.1]} Track the vertical center of the beam
+		\item \textbf{[1.1.2]} Estimate the distance from the beam
+		\item \textbf{[1.1.3]} Distinguish objects in the foreground from the background
+		\item \textbf{[1.1.4]}[1.1.3, 1.2.1, 1.2.2] Check for objects in its trajectory
+	\end{itemize}
+	\item \textbf{[1.2]} Maintenance tasks:
+	\begin{itemize}
+		\item \textbf{[1.2.1]}[1.1.1] Maintain its altitude to keep the beam vertically centered
+		\item \textbf{[1.2.2]}[1.1.2] Maintain a distance between 30 - 80 centimeters from the beam
+	\end{itemize}
+	\item \textbf{[1.3]} Action tasks:
+	\begin{itemize}
+		\item \textbf{[1.3.1]}[1.2] Move along the beam from left to right
+		\item \textbf{[1.3.2]}[1.1.4] Avoid collisions by landing
+	\end{itemize}
+\end{itemize}
+\noindent
+\textbf{[2] The product should make the drone:}
+\begin{itemize}
+	\item \textbf{[2.1]} Status tasks:
+	\begin{itemize}
+		\item \textbf{[2.1.1]} Keep track of the remaining layers needing to be scanned
+		\item \textbf{[2.1.2]} Determine the end of the beam
+	\end{itemize}
+	\item \textbf{[2.3]} Action tasks:
+	\begin{itemize}
+		\item \textbf{[2.3.1]}[1.1.2, 2.1] Move to other layers of a rack
+		\item \textbf{[2.3.2]}[1.2] Move along the beam from right to left
+		\item \textbf{[2.3.3]}[2.1.2] Stop at the end of the beam
+	\end{itemize}
+\end{itemize}
+\noindent
+\textbf{[3] The product might make the drone:}
+\begin{itemize}
+	\item \textbf{[3.1]} Status tasks:
+	\begin{itemize}
+		\item \textbf{[3.1.1]}[1.1.4] Determine if an object in its trajectory can be avoided
+		\item \textbf{[3.1.2]} Determine pixel size:distance ratio of the beam
+		\item \textbf{[3.1.3]}[1.2.1] Detect bar-codes on the beam
+	\end{itemize}
+	\item \textbf{[3.2]} Maintenance tasks:
+	\begin{itemize}
+		\item \textbf{[3.2.1]}[3.1.1] Readjust trajectory to avoid collision
+	\end{itemize}
+	\item \textbf{[3.3]} Action tasks:
+	\begin{itemize}
+		\item \textbf{[3.3.1]}[3.2.1] Move to the opposite rack of the same hallway
+	\end{itemize}
+	
+\end{itemize}
+
+\section{Assumptions}
+In order for the product to function accordingly, the following assumptions have been made:
+\begin{itemize}
+	\itemsep0em
+	\item The user is required to fly the drone to the correct starting position. This position is for the drone to face the left end of the lowest beam, at a distance between 30-80 centimeters.
+	\item There are no things sticking out more than 10 centimeters from the rack.
+	\item The drone will have enough battery capacity to complete one side of a rack.
+	\item The warehouse interior lights are turned on and provide enough lighting.
+	\item The drone is equipped with an RGB-camera.
+	\item There is at least 3 meters of free space after the end of a beam.
+	\item The drone remains connected to the device controlling it.
+\end{itemize}

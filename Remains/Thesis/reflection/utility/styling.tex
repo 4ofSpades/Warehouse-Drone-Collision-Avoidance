@@ -1,0 +1,14 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CONFIGURATION OF PAGE HEADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\newcommand{\headrulecolor}[1]{\patchcmd{\headrule}{\hrule}{\color{#1}\hrule}{}{}}
+\newcommand{\footrulecolor}[1]{\patchcmd{\footrule}{\hrule}{\color{#1}\hrule}{}{}}
+\pagestyle{fancy}
+\fancyhf{}% Clear header/footer
+\fancyhead[C]{}
+\fancyhead[R]{\thepage}
+\setlength{\headsep}{33pt}
+\setlength{\headheight}{13.6pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\parindent}{0em}

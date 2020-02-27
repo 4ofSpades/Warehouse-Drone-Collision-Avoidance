@@ -1,0 +1,27 @@
+\chapter{Setup State Machine Concept}
+\lhead{\thechapter \space Setup State Machine Concept}
+\label{app:setup}
+This chapter provides a set of instructions to install and set up the state machine concept. The link to the Git repository has been left out as it private. The project was developed using Python 3.6.9, which is also needed to run the project.
+
+\begin{enumerate}
+	\itemsep0em
+	\item Clone the repository to a local machine
+	\item Switch to branch "heuristic"
+	\item The project resides in the ./Python
+	\item Turn on the Tello drone
+	\item Once it starts flashing a green light, connect to the drone's WI-FI network.
+	\item Run the file Main.py using the command "python Main.py" in the command line.
+	\item Press the tab key to launch the drone, and press the "M" key to start the state machine. Note: make sure it is facing the beam before pressing "M".
+	\item To stop the state machine, press "M" again.
+	\item To land the drone and kill the program, press ESC. To just land the drone, press backspace.
+	\item Other controls for manually controlling the drone can be found in the DroneController.py file.
+\end{enumerate}
+
+This project is dependent on the following modules which can be installed through pip:
+\begin{itemize}
+	\item opencv-python (version 4.1.1.26) 
+	\item av (version 6.2.0)
+	\item tellopy (version 0.6.0)
+	\item simple\_pid (version 0.2.4)
+	\item pynput (version 1.4.5)
+\end{itemize}

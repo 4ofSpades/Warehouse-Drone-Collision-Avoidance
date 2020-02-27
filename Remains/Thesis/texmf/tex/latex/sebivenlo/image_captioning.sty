@@ -1,0 +1,19 @@
+%Image referencing with source
+%
+%Usage:
+%\documentclass{report}
+%\usepackage{image_captioning}
+%
+%\begin{document}
+%\begin{figure}
+%	\includegraphics{...}
+%	\captionsource{This is a caption}{This is the source, which can also be a \cite{...}}
+%\end{figure}
+%...
+
+\newcommand*{\captionsource}[2]{%
+  \caption[{#1}]{#1%
+    \textbf{ Source:} #2%
+  }%
+}
+

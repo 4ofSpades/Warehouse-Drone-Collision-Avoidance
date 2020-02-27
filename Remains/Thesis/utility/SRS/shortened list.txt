@@ -1,0 +1,56 @@
+--Description--
+One rack consists out of pallets on top of specifically-colored bars. Each of these bars thus forms a layer. 
+The main goals are:
+- Make the drone fly along a bar
+- Avoid collisions
+- Move between layers
+
+This can be further split up by separating it into the x,y,z position of the drone:
+X: Fly sideways, check for collision on side
+Y: Keep the bar in the camera view centered, move to unscanned layers
+Z: Get distance between the drone and the bar, adjust distance
+
+--Requirements--
+
+shall:
+- keep the bar centered
+- move right
+- keep a distance of at least 50 centimeters from the bar
+- check for collidable objects to the right of drone within at least 5 meters
+- stop and land to avoid collision with the following objects next to it:
+	vehicles
+	people
+	pallets
+
+should:
+- Keep track of the remaining layers needing to be scanned
+- Stop at the end of the rack
+- move left
+- check for collidable objects to the left of drone within at least 5 meters
+- Move up one layer
+
+might:
+- Detect barcodes on the bar
+- Determine whether it should wait or land to avoid collision
+- Readjust path to avoid collision
+- Move to the other side of the same hallway
+- Determine the pixel/distance ratio from the first frame
+
+
+--Assumptions--
+- The drone starts 25-30 centimeters from the bar of the first layer
+- The drone starts with the first bar centered in its vision
+- There are no objects sticking out more than 10 centimeters from the rack
+- The drone will have enough battery capacity for one side of one rack
+- The lights in the warehouse are turned on
+- The drone is equipped with a RGB camera
+- There is at least 2 meters of free space after the end of a bar
+- The drone remains connected to the device controlling it
+
+
+--Notes--
+Define layer, bar, rack, shall, should, want
+Give priorities 
+Give hierarchical IDs
+
+

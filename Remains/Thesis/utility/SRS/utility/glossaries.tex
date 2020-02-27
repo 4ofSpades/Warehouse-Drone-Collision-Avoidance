@@ -1,0 +1,74 @@
+%File for glossaries
+%TODO: Add beam (check and replace bar), rack, 
+%Glossaries
+\newglossaryentry{Shall}
+{
+	name={Shall},
+	description={Features that shall perform a certain task imply that said feature is both required and essential for the completion of the product. These features are thus considered high-priority features}
+}
+\newglossaryentry{Should}
+{
+	name={Should},
+	description={Features that should perform a certain task imply that said feature is required by the customer, but is given lower priority and is not considered essential}
+}
+\newglossaryentry{Might}
+{
+	name={Might},
+	description={Features that might perform a certain task imply that said feature is generally desired by the customer, but is not listed as a requirement}
+}
+\newglossaryentry{Customer}
+{
+	name={Customer},
+	description={The person, or persons, who pay for the product and usually (but not necessarily) decide the requirements. In the context of this recommended practice the customer and the supplier may be members of the same organization}
+}
+\newglossaryentry{Supplier}
+{
+	name={Supplier},
+	description={The person, or persons, who produce a product for a customer. In the context of this recommended practice, the customer and the supplier may be members of the same organization}
+}
+\newglossaryentry{Seacon_Drone_Project}
+{
+	name={Seacon Drone Project},
+	description={The Seacon Drone Project is the name used to refer to the entire project to semi-automate inventory control processes using drones. As of writing this document this includes functionality for self-navigating through the warehouse, collision avoidance, performing cycle counts, and checking specific locations}
+}
+\newglossaryentry{Product}
+{
+	name={Product},
+	description={The product is the name used to refer to the product of this iteration of the project, or the product of the warehouse drone collision avoidance project}
+}
+\newglossaryentry{Opencv}
+{
+	name={Opencv},
+	description={A computer vision library originally written in C}
+}
+\newglossaryentry{Layer}
+{
+	name={Layer},
+	description={A rack in a warehouse allows for multiple pallets to be stacked on top of each other, separated by horizontal beams. A layer consists out of a single beam with the items placed directly on top of it}
+}
+\newglossaryentry{Status_task}
+{
+	name={Status task},
+	description={A task concerned with (partially) retrieving the status of the drone and/or its environment. An example being tracking the vertical center of the beam}
+}
+\newglossaryentry{Maintenance_task}
+{
+	name={Maintenance task},
+	description={A supportive task that allows the drone to be able to perform its original tasks without interference. An example being readjusting the distance from the beam caused by drift}
+}
+\newglossaryentry{Action_task}
+{
+	name={Action task},
+	description={A task that is directly related to the movement of the drone}
+}
+
+
+%Abbreviations
+\newacronym{STG2}{STG2}{Graduation Project}
+\newacronym{AI}{A.I.}{Artificial Intelligence}
+\newacronym{FHTenL}{Fontys}{Fontys University of Applied Sciences}
+
+\setacronymstyle{long-short}
+
+
+%\printnoidxglossary[title=Definitions]
