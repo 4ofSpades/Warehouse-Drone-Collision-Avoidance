@@ -1,0 +1,41 @@
+current_position = None
+yaw = 0
+distance_progressed = 0
+is_completed = False
+
+for frame...:
+if in position:
+
+current_position = (pitch offset, throttle offset)
+
+if current_position is safe and distance_progressed > 50:
+	yaw = 45
+	detect
+	if collision_imminent:
+		land
+		check_completed = True
+	else:
+		yaw = 0
+		check_completed = True
+elif current_position is safe and yaw = 0:
+	right =+ 10
+	distance_progressed =+ 10
+else
+	
+
+
+
+
+
+#Scenarios
+safe, cumdis > 50, yaw = 0
+0, 0, 0 = readjust yaw
+0, 0, 1 = center
+0, 1, 0 = readjust yaw
+0, 1, 1 = center
+1, 0, 0 = readjust yaw
+1, 0, 1 = right
+1, 1, 0 = rotate
+1, 1, 1 = rotate
+
+
