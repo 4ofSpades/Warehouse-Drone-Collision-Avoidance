@@ -1,0 +1,43 @@
+\chapter{Project Description}
+\lhead{\thechapter \space Project Description}
+\label{ch:project_desc}
+
+Here, the details of the assignment are described. This includes things such as minimal requirements, the defining of epics and their sub-activities, and tools/frameworks that are planned to be used.
+
+\section{Assignment Description}
+\label{sec:ass_desc}
+The assignment is to research \gls{AI} approaches and (based on the research) develop a solution to provide drones with collision avoidance functionality. The drone should be able to get to a destination while avoiding obstacles along its path. The minimal requirements is to have the following:
+\begin{itemize}
+	\item To have a trained model or alternative solution that provides the collision avoidance.
+	\item A way of testing and demonstrating. Preferably by connecting the solution to a real drone. A simulation, however, will also suffice.
+\end{itemize}
+
+\noindent
+While the forthcoming research will play a big role in the decision of framework, components etc, the preliminary decision will be to use Keras and/or Tensorflow as framework, as these are most generally suitable. As language Python will be used, as most documentation for deep learning frameworks is available for Python, as well as that Python provides functionality for relatively easy implementations of simulations. Another reason is that the drone that will be used for development comes with a Python SDK. \\\\
+\noindent
+In a warehouse, there are 5 entities that should be kept into consideration when it comes to collision avoidance: forklifts, pallets, humans, other drones, and the environment itself. All entities can either be stationary or moving, with the exception of pallets. \\\\
+\noindent
+This assignment will be the first step of completing the roadmap of a bigger project, with the goal ultimately being having multiple drones operate semi-autonomously in the warehouses while performing tasks such as checking for anomalies of goods and barcode scanning. For the full road-map, please refer to figure \ref{fig:roadmap}. \\\\
+\noindent
+A way to measure the effectiveness of a solution is through the use of \gls{KPI}. While eventually the biggest \gls{KPI} will be the averted costs of replacing the current system, for the scope of this project the most important \gls{KPI} will be the collision/collisions avoided ratio. 
+\pagebreak
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{"img/seacon_roadmap"}
+	\caption{Roapmap of the Seacon drone project.}
+	\label{fig:roadmap}
+\end{figure}
+
+\noindent
+In figure \ref{fig:roadmap}, a few parts have been highlighted and given a number. These numbers indicate a priority in descending order, with 1 being the highest and thus most important. The parts highlighted with a red outline are considered crucial requirements for success, while the green ones will be considered optional extensions. More information regarding these extensions is given in chapter \ref{ch:scope}.
+
+\section{Epics and Activities}
+While use cases might not be very applicable within the scope of this project, 5 epics with their own stories and tasks have been defined. For the 5 epics with their descriptions, please refer to the list below. For a more detailed table containing the stories and complexities, please refer to appendix \ref{app:table}.
+\begin{itemize}
+	\item \textbf{Drone Control:} The drone should be able to move towards a set destination, with the use of scripts.
+	\item \textbf{Demonstration and Testing Environment:} A suitable testing and demonstration environment should be set up. This includes a potential simulation environment, but also details such as what things should be tested in order to truly evaluate robustness.
+	\item \textbf{Environmental Awareness:} The drone should make use of its visual and sensory equipment to register what's around it.
+	\item \textbf{Collision Avoidance:} The drone should be able to avoid colliding with both stationary and moving objects without human assistance.
+	\item \textbf{Pathing:} The drone should know where it is going, where it is now, and where it came from.
+\end{itemize}
+\pagebreak

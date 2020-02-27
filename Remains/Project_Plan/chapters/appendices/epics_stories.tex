@@ -1,0 +1,32 @@
+\chapter{Epics \& Stories}
+\lhead{\thechapter \space Epics \& Stories}
+\label{app:table}
+		\begin{table}[h]
+			\centering
+			\resizebox{\textwidth}{!}{%
+				\begin{tabular}{l|l|l}
+					\textbf{Epic} & \textbf{Story} & \textbf{Level} \\ \hline
+					Drone Control & The drone should return to a charger station when battery critical & 2 \\
+					& The drone should continuously wait/poll for new input from scripts & 1 \\
+					& The drone should obey movement commands sent via a script & 1 \\ \hline
+					Demonstration and Testing & 3D model for random pallets should be made & 1 \\
+					& 3D model for human should be made & 1 \\
+					& 3D model for forklifts should be made & 1 \\
+					& An endless path that resembles a warehouse should be made & 1 \\
+					& 3D-controllable model of drone should be made & 2 \\ \hline
+					Environmental Awareness & The drone should use its camera to detect collision points & 3 \\
+					& The drone should make sure it maintains appropriate altitude & 1 \\ \hline
+					Collision Avoidance & The drone should use its camera to detect collision points & 3 \\
+					& The path should be recalculated in case the drone diverts from it & 3 \\ \hline
+					Pathing & The drone should make sure it maintains appropriate altitude & 1 \\
+					& The path should be recalculated in case the drone diverts from it & 3 \\
+					& The drone should track how far it is on its path & 1 \\
+					& A path should be created connecting the starting and ending coordinates & 1
+				\end{tabular}%
+			}
+			\caption{List of all epics and stories.}
+			\label{tab:epicstable}
+		\end{table}
+	
+\noindent
+Above is a table containing the epic and stories. Within there, duplicate stories exist. This is due to the fact that some stories have overlap between multiple epics, and are thus included once in each of the relevant epics. Next to each story, there is also a level column. The level serves as a complexity indicator, with level 1 being the lowest complexity, and level 3 being the highest.
